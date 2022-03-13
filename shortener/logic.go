@@ -3,6 +3,7 @@ package shortener
 import (
 	"errors"
 	"time"
+
 	errs "github.com/pkg/errors"
 	"github.com/teris-io/shortid"
 	"gopkg.in/dealancer/validate.v2"
@@ -10,17 +11,11 @@ import (
 
 var (
 	ErrRedirectNotFound = errors.New("Redirect Not Found")
-	ErrRedirectInvalid  = errors.New("Redirect Invalid")
+	ErrRedirectInvalid = errors.New("Redirect Invalid")
 )
 
 type redirectService struct {
 	redirectRepo RedirectRepository
-}
-
-func NewRedirectService(redirectRepo RedirectRepository) RedirectService {
-	return &redirectService{
-		redirectRepo,
-	}
 }
 
 func (r *redirectService) Find(code string) (*Redirect, error) {
